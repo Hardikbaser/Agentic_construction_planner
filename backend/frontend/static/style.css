@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1100px; /* slightly wider for 3 cards */
   margin: auto;
   padding: 20px;
 }
@@ -42,7 +42,18 @@ header p {
   border: none;
   outline: none;
   font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* 🆕 Dropdown */
+#reportType {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
   margin-bottom: 15px;
+  background: #0f172a;
+  color: #f1f5f9;
 }
 
 /* Buttons */
@@ -75,6 +86,25 @@ button.secondary:hover {
   background: #059669;
 }
 
+/* 🆕 Report Button */
+button.report-btn {
+  background: #f59e0b;
+}
+
+button.report-btn:hover {
+  background: #d97706;
+}
+
+/* 🆕 Download Button */
+.card button {
+  margin-top: 10px;
+  background: #6366f1;
+}
+
+.card button:hover {
+  background: #4f46e5;
+}
+
 /* Output */
 pre {
   background: #0f172a;
@@ -83,12 +113,14 @@ pre {
   white-space: pre-wrap;
   max-height: 300px;
   overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-/* Grid */
+/* Grid (UPDATED for 3 sections) */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
@@ -97,8 +129,10 @@ pre {
   text-align: center;
   margin: 10px 0;
   color: #facc15;
+  font-weight: bold;
 }
 
+/* Hidden */
 .hidden {
   display: none;
 }

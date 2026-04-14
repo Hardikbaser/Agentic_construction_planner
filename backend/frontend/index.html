@@ -11,32 +11,54 @@
 
   <header>
     <h1>🏗️ Construction Planner Agent</h1>
-    <p>AI-powered planning & scheduling system</p>
+    <p>AI-powered planning, scheduling & report generation system</p>
   </header>
 
+  <!-- INPUT -->
   <div class="card input-card">
     <input id="goalInput" placeholder="Enter your construction goal..." />
+
+    <!-- 🆕 Report Type Dropdown -->
+    <select id="reportType">
+      <option value="site">Site Report</option>
+      <option value="progress">Progress Report</option>
+      <option value="safety">Safety Report</option>
+    </select>
     
     <div class="buttons">
       <button onclick="generatePlan()">Generate Plan</button>
       <button class="secondary" onclick="generateSchedule()">Generate Schedule</button>
+      <button class="report-btn" onclick="generateReport()">Generate Site Report</button> <!-- NEW -->
     </div>
   </div>
 
+  <!-- LOADING -->
   <div id="loading" class="loading hidden">
     ⏳ AI is thinking...
   </div>
 
+  <!-- OUTPUT GRID -->
   <div class="grid">
 
+    <!-- PLAN -->
     <div class="card">
       <h2>📋 Plan</h2>
       <pre id="planOutput">Your plan will appear here...</pre>
     </div>
 
+    <!-- SCHEDULE -->
     <div class="card">
       <h2>📅 Schedule</h2>
       <pre id="scheduleOutput">Your schedule will appear here...</pre>
+    </div>
+
+    <!-- 🆕 SITE REPORT -->
+    <div class="card">
+      <h2>📄 Site Report</h2>
+      <pre id="reportOutput">Your site report will appear here...</pre>
+
+      <!-- 🆕 Download Button -->
+      <button onclick="downloadReport()">⬇ Download Report</button>
     </div>
 
   </div>
