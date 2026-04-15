@@ -1,5 +1,6 @@
 fastapi
 langchain_groq
-crewaiuvicorn
+crewai
+uvicorn
 pydantic
 python-dotenv
