@@ -1,26 +1,25 @@
-FROM python:3.11-slim AS builder
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
-
-
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY --from=builder /root/.local /root/.local
+# Copy requirements first (for caching)
+COPY backend/requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy full project
 COPY . .
 
-# ✅ Fix permissions
-RUN chmod -R 755 /root/.local
+# Move into backend folder
+WORKDIR /app/backend
 
-ENV PATH=/root/.local/bin:$PATH
-
+# Create non-root user
 RUN useradd -m appuser
 USER appuser
 
 EXPOSE 8000
 
+# Run FastAPI
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
